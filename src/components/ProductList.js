@@ -1,39 +1,125 @@
-import React, { useState, useEffect } from 'react'; 
-import axios from 'axios'; 
-import { Link } from 'react-router-dom'; 
-import { Card, Button, Row, Col } from 'react-bootstrap'; // Import Card, Button, Row, and Col components from react-bootstrap library
+// src/components/ProductList.js
+// import React, { useState, useEffect, useContext } from 'react';
+// import axios from 'axios';
+// import { Link } from 'react-router-dom';
+// import { Card, Button, Row, Col, Form } from 'react-bootstrap';
+// import { CartContext } from '../contexts/CartContext';
 
-const ProductList = () => { // Define ProductList functional component
-  const [products, setProducts] = useState([]); // Define state variable for products and setter function
+// const ProductList = () => {
+//   const [products, setProducts] = useState([]);
+//   const { addToCart } = useContext(CartContext);
+//   const [selectedSizes, setSelectedSizes] = useState({});
 
-  useEffect(() => { // useEffect hook to fetch product list when component mounts
-    axios.get('https://664fb9f3ec9b4a4a602facfd.mockapi.io/products') // Fetch product list from API
-      .then(response => setProducts(response.data)) // Set products state with response data
-      .catch(error => console.error(error)); // Log any errors to the console
-  }, []); 
+//   useEffect(() => {
+//     axios.get('https://664fb9f3ec9b4a4a602facfd.mockapi.io/products')
+//       .then(response => setProducts(response.data))
+//       .catch(error => console.error(error));
+//   }, []);
 
-  return ( // Return JSX to render product list
-    <Row> {/* Start of Row component */}
-      {products.map(product => ( // Map through products array and render Card component for each product
-        <Col key={product.id} sm={12} md={6} lg={4} xl={3}> {/* Start of Col component */}
-          <Card className="mb-4"> {/* Card component for displaying product */}
-            <Card.Img variant="top" src={product.image} /> {/* Product image */}
-            <Card.Body> {/* Card body */}
-              <Card.Title>{product.name}</Card.Title> {/* Product name */}
-              <Card.Text> {/* Product price */}
-                ${product.price}
-              </Card.Text>
-              <Link to={`/products/${product.id}`}> {/* Link to product detail page */}
-                <Button variant="primary">Details</Button> {/* Button to view product details */}
-              </Link> 
-            </Card.Body> 
-          </Card> 
-        </Col> 
-      ))} 
-    </Row> 
+//   const handleSizeChange = (productId, size) => {
+//     setSelectedSizes({ ...selectedSizes, [productId]: size });
+//   };
+
+//   return (
+//     <Row>
+//       {products.map(product => (
+//         <Col key={product.id} sm={12} md={6} lg={4} xl={3}>
+//           <Card className="mb-4">
+//             <Card.Img variant="top" src={product.image} />
+//             <Card.Body>
+//               <Card.Title>{product.name}</Card.Title>
+//               <Card.Text>${product.price}</Card.Text>
+//               <Form.Select
+//                 value={selectedSizes[product.id] || ''}
+//                 onChange={(e) => handleSizeChange(product.id, e.target.value)}
+//               >
+//                 <option value="">Select Size</option>
+//                 <option value="S">S</option>
+//                 <option value="M">M</option>
+//                 <option value="L">L</option>
+//                 <option value="XL">XL</option>
+//               </Form.Select>
+//               <Button
+//                 variant="primary"
+//                 className="mt-2"
+//                 onClick={() => addToCart(product, selectedSizes[product.id])}
+//                 disabled={!selectedSizes[product.id]}
+//               >
+//                 Add to Cart
+//               </Button>
+//               <Link to={`/products/${product.id}`}>
+//                 <Button variant="secondary" className="mt-2">Details</Button>
+//               </Link>
+//             </Card.Body>
+//           </Card>
+//         </Col>
+//       ))}
+//     </Row>
+//   );
+// };
+
+// export default ProductList;
+
+
+import React, { useState, useEffect, useContext } from 'react';
+import axios from 'axios';
+import { Link } from 'react-router-dom';
+import { Card, Button, Row, Col, Form } from 'react-bootstrap';
+// import { CartContext } from '../contexts/CartContext';
+
+
+
+const ProductList = () => {
+   const [products, setProducts] = useState([]);
+  // const { addToCart } = useContext(CartContext);
+  const [selectedSizes, setSelectedSizes] = useState({});
+
+  useEffect(() => {
+    axios.get('https://664fb9f3ec9b4a4a602facfd.mockapi.io/products')
+      .then(response => setProducts(response.data))
+      .catch(error => console.error(error));
+  }, []);
+
+  const handleSizeChange = (productId, size) => {
+    setSelectedSizes({ ...selectedSizes, [productId]: size });
+  };
+
+  return (
+    <Row>
+      {products.map(product => (
+        <Col key={product.id} sm={12} md={6} lg={4} xl={3}>
+          <Card className="mb-4">
+            <Card.Img variant="top" src={product.image} />
+            <Card.Body>
+              <Card.Title>{product.name}</Card.Title>
+              <Card.Text>${product.price}</Card.Text>
+              <Form.Select
+                value={selectedSizes[product.id] || ''}
+                onChange={(e) => handleSizeChange(product.id, e.target.value)}
+              >
+                <option value="">Select Size</option>
+                <option value="S">S</option>
+                <option value="M">M</option>
+                <option value="L">L</option>
+                <option value="XL">XL</option>
+              </Form.Select>
+              <Button
+                variant="primary"
+                className="mt-2"
+                // onClick={() => addToCart(product, selectedSizes[product.id])}
+                disabled={!selectedSizes[product.id]}
+              >
+                Add to Cart
+              </Button>
+              <Link to={`/products/${product.id}`}>
+                <Button variant="secondary" className="mt-2">Details</Button>
+              </Link>
+            </Card.Body>
+          </Card>
+        </Col>
+      ))}
+    </Row>
   );
 };
 
-export default ProductList; 
-
-
+export default ProductList;

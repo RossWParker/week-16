@@ -8,10 +8,10 @@ const ProductForm = () => { // Define ProductForm functional component
   const [price, setPrice] = useState(''); // Define state variable for product price and setter function
   const [image, setImage] = useState(''); // Define state variable for product image URL and setter function
 
-  const handleSubmit = (e) => { // Function to handle form submission
+  const handleSubmit = (e) => { 
     e.preventDefault(); // Prevent default form submission behavior
 
-    // Validate inputs
+    
     // Check if any field is empty display message if so 
     if (!name || !description || !price || !image) { 
       alert('Please fill in all fields'); 
@@ -42,7 +42,7 @@ const ProductForm = () => { // Define ProductForm functional component
       });
   };
 
-  return ( // Return JSX for rendering product form
+  return ( 
     <div> 
       <h1>Add New Product</h1> 
       <Form onSubmit={handleSubmit}> {/* Form with handleSubmit function as onSubmit event handler */}
