@@ -1,0 +1,14 @@
+/* BengalsSchedule.css */
+.schedule-container {
+    background-color: black;
+    height: 200vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .schedule-image {
+    max-width: 100%;
+    height: auto;
+  }
+  
