@@ -46,9 +46,9 @@ const ProductForm = () => { // Define ProductForm functional component
     <div> 
       <h1>Add New Product</h1> 
       <Form onSubmit={handleSubmit}> {/* Form with handleSubmit function as onSubmit event handler */}
-        <Form.Group controlId="formName"> {/* Form group for product name input */}
-          <Form.Label>Name</Form.Label> {/* Label for product name input */}
-          <Form.Control // Input field for product name
+        <Form.Group controlId="formName"> 
+          <Form.Label>Name</Form.Label> 
+          <Form.Control 
             type="text" 
             placeholder="Enter product name" 
             value={name} // Value of name state variable
@@ -63,22 +63,22 @@ const ProductForm = () => { // Define ProductForm functional component
             value={description} 
             onChange={(e) => setDescription(e.target.value)} 
           />
-        </Form.Group> {/* End of form group for product description input */}
+        </Form.Group> 
         <Form.Group controlId="formPrice"> {/* Form group for product price input */}
-          <Form.Label>Price</Form.Label> {/* Label for product price input */}
-          <Form.Control // Input field for product price
-            type="number" // Input type number
-            placeholder="Enter product price" // Placeholder text
-            value={price} // Value of price state variable
-            onChange={(e) => setPrice(e.target.value)} // onChange event handler to update price state
+          <Form.Label>Price</Form.Label> 
+          <Form.Control 
+            type="number" 
+            placeholder="Enter product price" 
+            value={price} 
+            onChange={(e) => setPrice(e.target.value)} 
           />
-        </Form.Group> {/* End of form group for product price input */}
-        <Form.Group controlId="formImage"> {/* Form group for product image URL input */}
-          <Form.Label>Image URL</Form.Label> {/* Label for product image URL input */}
-          <Form.Control // Input field for product image URL
-            type="text" // Input type text
+        </Form.Group> 
+        <Form.Group controlId="formImage"> 
+          <Form.Label>Image URL</Form.Label> 
+          <Form.Control 
+            type="text" 
             placeholder="Enter product image URL" 
-            value={image} // Value of image state variable
+            value={image} 
             onChange={(e) => setImage(e.target.value)} // onChange event handler to update image state
           />
         </Form.Group> 
@@ -90,7 +90,7 @@ const ProductForm = () => { // Define ProductForm functional component
   );
 };
 
-export default ProductForm; // Export ProductForm component
+export default ProductForm; 
 
 
 

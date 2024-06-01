@@ -16,7 +16,7 @@ const Contact = () => {
 
   return (
     <div>
-      <h1>Contact Us</h1>
+      <h1>Ticket Sales</h1>
       {/* Create a form with input fields for name, number, and email */}
       <Form onSubmit={handleSubmit}>
         <Form.Group controlId="formName">
@@ -53,6 +53,7 @@ const Contact = () => {
         <Button variant="primary" type="submit">
           Submit
         </Button>
+        
       </Form>
     </div>
   );
